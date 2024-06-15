@@ -1,0 +1,209 @@
+/* styles.css */
+
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header, nav, main, footer {
+    margin: 20px;
+}
+
+/* Estilos de encabezado */
+header {
+    text-align: center;
+}
+
+header h1 {
+    font-size: 36px;
+    color: #ffffff;
+}
+
+/* Estilos de navegación */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/* Estilos de secciones */
+section {
+    margin-bottom: 40px;
+}
+
+/* Estilos de los contenedores de secciones */
+.section-container {
+    width: 70%; /* Ancho deseado del contenedor */
+    margin: 0 auto; /* Centrar horizontalmente */
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/* Estilos de pie de página */
+footer {
+    text-align: center;
+}
+
+/* CSS para los bloques de videos */
+.video-block {
+    margin-bottom: 30px;
+    border: 1px solid #ffffff;
+    overflow: hidden;
+    background-color: #5219d6;
+}
+
+.video-description {
+    padding: 10px;
+}
+
+.video-description h2 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.video-content {
+    position: relative;
+    padding-bottom: 56.25%; /* Proporción 16:9 para el video */
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+}
+
+.video-content iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.parallax {
+    background-image: url('FondoParalax.jpg'); /* Cambia 'fondo.jpg' por la URL de tu imagen de fondo */
+    height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1; /* Coloca el fondo detrás de los demás elementos */
+    filter: blur(5px); /* Efecto de desenfoque para un fondo más suave */
+}
+/* Estilos para los bloques de contenido */
+.content-block {
+    width: calc(50% - 20px); /* Establece el ancho del bloque al 50% del contenedor, menos el espacio entre bloques */
+    margin: 10px; /* Espacio entre bloques */
+    float: left; /* Hace que los bloques se alineen uno al lado del otro */
+}
+
+/* Estilos para la descripción del contenido */
+.content-description {
+    padding: 10px;
+}
+
+/* Estilos para los medios de contenido (foto o video) */
+.content-media {
+    overflow: hidden; /* Evita que los medios sobresalgan del bloque */
+}
+
+.content-media img,
+.content-media iframe {
+    width: 100%; /* Ajusta el ancho de la imagen o el video al 100% del bloque */
+    height: auto; /* Ajusta la altura automáticamente para mantener la proporción */
+}
+
+/* Estilos para los bloques de contenido */
+.content-block {
+    width: calc(50% - 20px); /* Establece el ancho del bloque al 50% del contenedor, menos el espacio entre bloques */
+    margin: 10px; /* Espacio entre bloques */
+    float: left; /* Hace que los bloques se alineen uno al lado del otro */
+}
+
+/* Estilos para los medios de contenido (foto o video) */
+.content-media {
+    overflow: hidden; /* Evita que los medios sobresalgan del bloque */
+    position: relative; /* Añade posición relativa para que el video pueda ser redimensionado */
+    padding-bottom: 56.25%; /* Proporción 16:9 para el video */
+    height: 0; /* Altura inicial cero para el contenedor */
+}
+
+.content-media video {
+    position: absolute; /* Posiciona el video absolutamente dentro del contenedor */
+    width: 100%; /* Ajusta el ancho del video al 100% del contenedor */
+    height: 100%; /* Ajusta la altura del video al 100% del contenedor */
+    top: 0; /* Alinea el video en la parte superior del contenedor */
+    left: 0; /* Alinea el video en la parte izquierda del contenedor */
+}
+
+/* Estilos para el formulario del foro */
+/* Estilos para la sección del foro */
+#forum {
+    background-color: #000000;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#forum h2 {
+    margin-top: 0; /* Elimina el margen superior del título */
+    margin-bottom: 20px; /* Agrega un margen inferior al título */
+}
+
+#message-form {
+    margin-bottom: 20px; /* Agrega un margen inferior al formulario */
+}
+
+#message-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#message-form input[type="text"],
+#message-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #000000;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+#message-form textarea {
+    height: 100px; /* Altura mínima del campo de texto */
+}
+
+#message-form button {
+    background-color: #4CAF50; /* Color de fondo verde */
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#message-form button:hover {
+    background-color: #45a049; /* Color de fondo verde oscuro al pasar el ratón */
+}
+
+#forum-messages {
+    background-color: #000000;
+    padding: 10px;
+    border: 1px solid #000000;
+    border-radius: 3px;
+}
+
