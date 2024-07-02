@@ -2,22 +2,39 @@ document.addEventListener("DOMContentLoaded", function() {
     const form = document.getElementById("message-form");
     const messagesDiv = document.getElementById("forum-messages");
 
-    // Función para cargar los mensajes desde localStorage
-    function loadMessages() {
-        const messages = JSON.parse(localStorage.getItem("forumMessages")) || [];
-        messagesDiv.innerHTML = ""; // Limpiar el div de mensajes
-        messages.forEach(message => {
-            const messageElement = document.createElement("div");
-            messageElement.innerHTML = `<strong>${message.username}</strong>: ${message.text}`;
-            messagesDiv.appendChild(messageElement);
-        });
+    // Función para cargar los mensajes desde el servidor
+    async function loadMessages() {
+        try {
+            const response = await fetch('http://localhost:3000/messages');
+            const messages = await response.json();
+            messagesDiv.innerHTML = ""; // Limpiar el div de mensajes
+            messages.forEach(message => {
+                const messageElement = document.createElement("div");
+                messageElement.innerHTML = `<strong>${message.username}</strong>: ${message.text}`;
+                messagesDiv.appendChild(messageElement);
+            });
+        } catch (error) {
+            console.error('Error al cargar los mensajes:', error);
+        }
     }
 
-    // Función para guardar un mensaje en localStorage
-    function saveMessage(username, message) {
-        const messages = JSON.parse(localStorage.getItem("forumMessages")) || [];
-        messages.push({ username, text: message });
-        localStorage.setItem("forumMessages", JSON.stringify(messages));
+    // Función para enviar un nuevo mensaje al servidor
+    async function saveMessage(username, message) {
+        try {
+            const response = await fetch('http://localhost:3000/messages', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, text: message })
+            });
+            const newMessage = await response.json();
+            const messageElement = document.createElement("div");
+            messageElement.innerHTML = `<strong>${newMessage.username}</strong>: ${newMessage.text}`;
+            messagesDiv.appendChild(messageElement);
+        } catch (error) {
+            console.error('Error al enviar el mensaje:', error);
+        }
     }
 
     // Cargar los mensajes al iniciar la página
@@ -33,11 +50,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const message = messageInput.value;
 
         if (username.trim() !== "" && message.trim() !== "") {
-            const messageElement = document.createElement("div");
-            messageElement.innerHTML = `<strong>${username}</strong>: ${message}`;
-            messagesDiv.appendChild(messageElement);
-
-            // Guardar el mensaje en localStorage
+            // Guardar el mensaje en el servidor
             saveMessage(username, message);
 
             // Limpiar los campos después de enviar el mensaje
